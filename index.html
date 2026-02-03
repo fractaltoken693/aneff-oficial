@@ -3,93 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANEFF | Sincronización Fractal</title>
+    <title>ANEFF | Ecosistema Fractal</title>
+    <meta name="description" content="Laboratorio de innovación social y Web3. Educación Financiera Fractal.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; overflow: hidden; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; margin: 0; }
         .font-orbitron { font-family: 'Orbitron', sans-serif; }
-        #canvas-fractal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
-        .glow-text { text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
-        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(0, 255, 255, 0.1); }
-        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 255, 255, 0.05); animation: scanline 6s linear infinite; pointer-events: none; }
+        
+        /* Lienzo para el Fractal WebGL */
+        #glCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+        }
+
+        .glass-panel {
+            background: rgba(10, 10, 20, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glow-text { text-shadow: 0 0 20px rgba(6, 182, 212, 0.6); }
+        .glow-gold { text-shadow: 0 0 15px rgba(250, 204, 21, 0.4); }
+
+        /* Animación de escaneo */
+        .scanline {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.02) 51%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 50;
+        }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+<body class="flex flex-col items-center justify-center min-h-screen px-4 py-12 relative">
     
+    <canvas id="glCanvas"></canvas>
     <div class="scanline"></div>
-    <canvas id="canvas-fractal"></canvas>
 
-    <main class="max-w-3xl glass-panel p-10 md:p-16 rounded-[2.5rem] shadow-2xl relative z-10 border border-white/5">
+    <main class="w-full max-w-4xl glass-panel p-8 md:p-16 rounded-[2rem] relative z-10 animate-fade-in text-center border-t border-white/10">
         
-        <!-- Estado del Protocolo -->
-        <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-10 animate-pulse">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></span>
-            <span class="text-[10px] md:text-xs font-orbitron tracking-[0.3em] text-cyan-400 uppercase">Fase A: El Origen | Enlace Activo</span>
+        <!-- Badge Superior -->
+        <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-black/40 border border-cyan-500/30 mb-8 backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span class="text-[10px] md:text-xs font-orbitron tracking-[0.25em] text-cyan-400 uppercase">Nodo Maestro: Activo</span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-orbitron font-bold tracking-tighter mb-4 glow-text">
+        <!-- Título -->
+        <h1 class="text-6xl md:text-8xl font-orbitron font-black tracking-tighter mb-2 text-white glow-text leading-tight">
             ANEFF
         </h1>
-        
-        <p class="text-[10px] md:text-xs font-orbitron tracking-[0.5em] text-gray-500 uppercase mb-10">
+        <p class="text-[10px] md:text-xs font-orbitron tracking-[0.6em] text-cyan-200/60 uppercase mb-12">
             Asociación Nacional de Educación Financiera Fractal
         </p>
 
-        <div class="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto mb-10"></div>
+        <!-- El Nuevo Manifiesto -->
+        <div class="relative mb-14">
+            <div class="absolute -left-4 -top-4 text-6xl text-white/10 font-serif">"</div>
+            <p class="text-base md:text-xl leading-relaxed font-light text-gray-300 italic px-4 md:px-10">
+                Más que una herramienta de poder, el fractal es una revelación: el cambio profundo de la sociedad comienza con la metamorfosis silenciosa del individuo. Es a través de esta repetición consciente que forjamos nuevos mundos, guiando al espíritu hacia su inevitable evolución mediante el reconocimiento de su propia estructura eterna.
+            </p>
+            <div class="absolute -right-4 -bottom-4 text-6xl text-white/10 font-serif rotate-180">"</div>
+        </div>
 
-        <p class="text-lg md:text-2xl leading-relaxed font-light text-gray-200 italic mb-12 px-4">
-            "Laboratorio de innovación social que integra la sabiduría de los patrones naturales 
-            <span class="text-cyan-400 font-semibold">(Fibonacci/Fractales)</span> 
-            con la tecnología <span class="text-purple-400 font-semibold">Web3</span> 
-            para formar ciudadanos soberanos en la economía del siglo XXI."
-        </p>
-
-        <!-- Botón de Redes -->
-        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <a href="https://www.facebook.com/profile.php?id=61572621376813" target="_blank" class="group relative px-10 py-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden transition-all hover:border-cyan-500/50">
-                <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/5 transition-colors"></div>
-                <span class="relative font-orbitron text-xs tracking-[0.2em] uppercase text-gray-300 group-hover:text-cyan-400">Seguir en Facebook</span>
+        <!-- Sección de Token y Comunidad (Preventa) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            
+            <!-- Tarjeta Facebook -->
+            <a href="https://www.facebook.com/profile.php?id=61587393931367" target="_blank" class="group flex flex-col justify-center items-center p-6 rounded-2xl bg-blue-600/10 border border-blue-500/20 hover:bg-blue-600/20 hover:border-blue-500/50 transition-all duration-300">
+                <svg class="w-8 h-8 text-blue-400 mb-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.962.925-1.962 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span class="font-orbitron text-xs tracking-widest text-blue-200">CONECTAR EN FACEBOOK</span>
             </a>
+
+            <!-- Tarjeta Preventa / Telegram -->
+            <div class="relative group flex flex-col justify-center items-center p-6 rounded-2xl bg-amber-500/5 border border-amber-500/20 overflow-hidden">
+                <div class="absolute top-0 right-0 bg-amber-500 text-black text-[9px] font-bold px-3 py-1 font-orbitron">FASE GÉNESIS</div>
+                
+                <h3 class="text-xl font-orbitron font-bold text-amber-400 mb-1 glow-gold">EDUFT TOKEN</h3>
+                <p class="text-xs text-amber-200/70 mb-4 font-light">Preventa Exclusiva & Whitelist</p>
+                
+                <a href="#" class="px-6 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold font-orbitron text-xs tracking-wider transition-colors cursor-pointer w-full">
+                    UNIRSE A LA ÉLITE (TG)
+                </a>
+            </div>
         </div>
 
     </main>
 
-    <footer class="fixed bottom-10 text-[9px] font-orbitron text-gray-600 tracking-[0.6em] uppercase">
-        Desarrollado bajo el marco de la Nueva Escuela Mexicana • 2026
+    <footer class="mt-12 text-center opacity-60">
+        <p class="text-[10px] font-orbitron text-cyan-500 tracking-[0.4em] uppercase mb-2">Protocolo Descentralizado</p>
+        <p class="text-[9px] text-gray-500">© 2026 ANEFF. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script WebGL para el Fractal Dinámico (Julia Set) -->
     <script>
-        const canvas = document.getElementById('canvas-fractal');
-        const ctx = canvas.getContext('2d');
-        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
-        let time = 0;
-        function drawFibonacciSpiral() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
-            ctx.lineWidth = 1.5;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            ctx.beginPath();
-            let a = 0, b = 1, angle = 0;
-            for (let i = 0; i < 18; i++) {
-                const radius = b * (2 + Math.sin(time * 0.2)) * 4;
-                const x = centerX + Math.cos(angle + time * 0.05) * radius;
-                const y = centerY + Math.sin(angle + time * 0.05) * radius;
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-                let temp = a + b; a = b; b = temp;
-                angle += Math.PI / 2;
-            }
-            ctx.stroke();
-            time += 0.02;
-            requestAnimationFrame(drawFibonacciSpiral);
+        const canvas = document.getElementById("glCanvas");
+        const gl = canvas.getContext("webgl");
+
+        if (!gl) {
+            console.error("WebGL no soportado");
         }
-        drawFibonacciSpiral();
+
+        // Vertex Shader (Simple)
+        const vsSource = `
+            attribute vec4 aVertexPosition;
+            void main() {
+                gl_Position = aVertexPosition;
+            }
+        `;
+
+        // Fragment Shader (Conjunto de Julia con colores Neón)
+        const fsSource = `
+            precision highp float;
+            uniform vec2 uResolution;
+            uniform float uTime;
+            uniform vec2 uMouse;
+
+            // Paleta de colores ANEFF (Cian, Purpura, Oscuro)
+            vec3 palette(float t) {
+                vec3 a = vec3(0.5, 0.5, 0.5);
+                vec3 b = vec3(0.5, 0.5, 0.5);
+                vec3 c = vec3(1.0, 1.0, 1.0);
+                vec3 d = vec3(0.00, 0.33, 0.67);
+                return a + b * cos(6.28318 * (c * t + d));
+            }
+
+            void main() {
+                vec2 uv = (gl_FragCoord.xy * 2.0 - uResolution.xy) / uResolution.y;
+                vec2 mouse = (uMouse / uResolution.xy) * 2.0 - 1.0;
+
+                // Animación automática + interacción sutil
+                float anim = sin(uTime * 0.2) * 0.6;
+                vec2 c = vec2(-0.8 + cos(uTime * 0.5) * 0.2, 0.156 + sin(uTime * 0.5) * 0.2);
+
+                vec2 z = uv * 1.5; // Zoom inicial
+                float iter = 0.0;
+                const float maxIter = 80.0;
+
+                for (float i = 0.0; i < maxIter; i++) {
+                    z = vec2(z.x * z.x - z.y * z.y, 2.0 * z.x * z.y) + c;
+                    if (length(z) > 2.0) break;
+                    iter++;
+                }
+
+                // Coloreado Fractal
+                float f = iter / maxIter;
+                vec3 color = palette(f + uTime * 0.1);
+
+                // Oscurecer el fondo para que el texto sea legible
+                color *= smoothstep(0.0, 1.2, 1.0 - length(uv * 0.4)); 
+                
+                // Tinte Cyan/Morado
+                color = mix(vec3(0.0, 0.0, 0.05), color, f * 1.5); 
+                
+                gl_FragColor = vec4(color, 1.0);
+            }
+        `;
+
+        // Compilar Shaders
+        function loadShader(gl, type, source) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                console.error(gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+            return shader;
+        }
+
+        const shaderProgram = gl.createProgram();
+        gl.attachShader(shaderProgram, loadShader(gl, gl.VERTEX_SHADER, vsSource));
+        gl.attachShader(shaderProgram, loadShader(gl, gl.FRAGMENT_SHADER, fsSource));
+        gl.linkProgram(shaderProgram);
+        gl.useProgram(shaderProgram);
+
+        // Buffer de posición (Cuadrado que cubre la pantalla)
+        const positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        const positions = [-1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0];
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+        const aVertexPosition = gl.getAttribLocation(shaderProgram, "aVertexPosition");
+        gl.enableVertexAttribArray(aVertexPosition);
+        gl.vertexAttribPointer(aVertexPosition, 2, gl.FLOAT, false, 0, 0);
+
+        // Uniforms
+        const uResolution = gl.getUniformLocation(shaderProgram, "uResolution");
+        const uTime = gl.getUniformLocation(shaderProgram, "uTime");
+        const uMouse = gl.getUniformLocation(shaderProgram, "uMouse");
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function render(time) {
+            time *= 0.001; // Segundos
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+
+            gl.uniform2f(uResolution, canvas.width, canvas.height);
+            gl.uniform1f(uTime, time);
+            gl.uniform2f(uMouse, mouseX, mouseY);
+
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            requestAnimationFrame(render);
+        }
+        requestAnimationFrame(render);
     </script>
 </body>
-
 </html>
