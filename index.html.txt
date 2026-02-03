@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANEFF | Sincronización Fractal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #050505; color: #ffffff; font-family: 'Inter', sans-serif; overflow: hidden; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        #canvas-fractal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.3; }
+        .glow-text { text-shadow: 0 0 15px rgba(0, 255, 255, 0.5); }
+        .glass-panel { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(0, 255, 255, 0.1); }
+        @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 2px; background: rgba(0, 255, 255, 0.05); animation: scanline 6s linear infinite; pointer-events: none; }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+    
+    <div class="scanline"></div>
+    <canvas id="canvas-fractal"></canvas>
+
+    <main class="max-w-3xl glass-panel p-10 md:p-16 rounded-[2.5rem] shadow-2xl relative z-10 border border-white/5">
+        
+        <!-- Estado del Protocolo -->
+        <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-10 animate-pulse">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></span>
+            <span class="text-[10px] md:text-xs font-orbitron tracking-[0.3em] text-cyan-400 uppercase">Fase A: El Origen | Enlace Activo</span>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-orbitron font-bold tracking-tighter mb-4 glow-text">
+            ANEFF
+        </h1>
+        
+        <p class="text-[10px] md:text-xs font-orbitron tracking-[0.5em] text-gray-500 uppercase mb-10">
+            Asociación Nacional de Educación Financiera Fractal
+        </p>
+
+        <div class="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent mx-auto mb-10"></div>
+
+        <p class="text-lg md:text-2xl leading-relaxed font-light text-gray-200 italic mb-12 px-4">
+            "Laboratorio de innovación social que integra la sabiduría de los patrones naturales 
+            <span class="text-cyan-400 font-semibold">(Fibonacci/Fractales)</span> 
+            con la tecnología <span class="text-purple-400 font-semibold">Web3</span> 
+            para formar ciudadanos soberanos en la economía del siglo XXI."
+        </p>
+
+        <!-- Botón de Redes -->
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+            <a href="https://www.facebook.com/profile.php?id=61572621376813" target="_blank" class="group relative px-10 py-4 rounded-xl bg-white/5 border border-white/10 overflow-hidden transition-all hover:border-cyan-500/50">
+                <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/5 transition-colors"></div>
+                <span class="relative font-orbitron text-xs tracking-[0.2em] uppercase text-gray-300 group-hover:text-cyan-400">Seguir en Facebook</span>
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="fixed bottom-10 text-[9px] font-orbitron text-gray-600 tracking-[0.6em] uppercase">
+        Desarrollado bajo el marco de la Nueva Escuela Mexicana • 2026
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('canvas-fractal');
+        const ctx = canvas.getContext('2d');
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
+        let time = 0;
+        function drawFibonacciSpiral() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(0, 255, 255, 0.1)';
+            ctx.lineWidth = 1.5;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            ctx.beginPath();
+            let a = 0, b = 1, angle = 0;
+            for (let i = 0; i < 18; i++) {
+                const radius = b * (2 + Math.sin(time * 0.2)) * 4;
+                const x = centerX + Math.cos(angle + time * 0.05) * radius;
+                const y = centerY + Math.sin(angle + time * 0.05) * radius;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+                let temp = a + b; a = b; b = temp;
+                angle += Math.PI / 2;
+            }
+            ctx.stroke();
+            time += 0.02;
+            requestAnimationFrame(drawFibonacciSpiral);
+        }
+        drawFibonacciSpiral();
+    </script>
+</body>
+</html>
