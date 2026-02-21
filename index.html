@@ -212,14 +212,14 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE POSTULACIÓN (REEMPLAZANDO TELEGRAM) -->
+        <!-- SECCIÓN DE POSTULACIÓN -->
         <section id="passportSection" class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[100px]"></div>
             
             <div class="max-w-2xl mx-auto">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-cinzel text-white mb-2 uppercase tracking-widest">Protocolo de Postulación</h2>
-                    <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Sincronía Google Cloud & Firebase</p>
+                    <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Identidad Sincronizada</p>
                 </div>
 
                 <!-- Estado 1: Iniciar Sincronía -->
@@ -334,7 +334,6 @@
             btnSubmit.innerText = "TRANSMITIENDO...";
 
             try {
-                // Ruta: /artifacts/{appId}/public/data/postulaciones/{uid}
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'postulaciones', user.uid);
                 await setDoc(docRef, {
                     uid: user.uid,
@@ -352,7 +351,7 @@
                 stepSuccess.classList.remove('hidden');
             } catch (e) {
                 console.error(e);
-                alert("Falla en el Ledger de Firestore. Intenta de nuevo.");
+                alert("Falla en el Ledger. Intenta de nuevo.");
                 btnSubmit.disabled = false;
             }
         };
