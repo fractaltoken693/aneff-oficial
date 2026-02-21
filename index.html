@@ -169,26 +169,42 @@
         <!-- TOKENOMICS -->
         <section class="text-center">
             <h2 class="text-3xl font-orbitron font-bold mb-16 glow-cyan italic uppercase tracking-tighter">Tokenomics</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Nodos Fundadores -->
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-cyan-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-cyan-400">144</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Nodos Fundadores</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Poder distribuido en la red fundacional.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Puntos críticos de validación descentralizada. Whitelist exclusiva para los pioneros de la Fase Génesis.</p>
                 </div>
+                <!-- Suministro EDUFT -->
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-purple-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-purple-400">144M</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Suministro EDUFT</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Energía económica limitada matemáticamente.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Emisión limitada bajo la Sucesión de Fibonacci para asegurar escasez algorítmica y sostenibilidad.</p>
                 </div>
+                <!-- DAO Gobernanza -->
+                <div class="glass-panel p-8 rounded-3xl border-t-2 border-indigo-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-indigo-400">DAO</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Gobernanza Holárquica</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Organización Autónoma Descentralizada donde cada nodo ejerce su voto sobre la evolución del sistema.</p>
+                </div>
+                <!-- SBT -->
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-amber-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-amber-400">SBT</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Soulbound ID</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Identidad ligada al mérito inmutable.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Certificados inmutables e intransferibles que vinculan tu mérito pedagógico a tu identidad bio-digital.</p>
                 </div>
+                <!-- POK -->
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-emerald-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-emerald-400">POK</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Proof of Knowledge</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Minería de conciencia validada.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Algoritmo de minería de conciencia que valida el aprendizaje como la energía real que respalda al token.</p>
+                </div>
+                <!-- Staking -->
+                <div class="glass-panel p-8 rounded-3xl border-t-2 border-rose-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-rose-400">STAKING</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Sincronía Fractal</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Bloqueo estratégico de energía (EDUFT) para estabilizar la red y amplificar el poder de voto del nodo.</p>
                 </div>
             </div>
         </section>
@@ -217,14 +233,14 @@
                     </button>
                 </div>
 
-                <!-- Estado 2: Éxito Automático -->
+                <!-- Estado 2: Éxito Automático con Texto Explicativo -->
                 <div id="step-success" class="hidden text-center py-12 space-y-6 animate-fadeIn">
                     <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto border border-green-500/50">
                         <i data-lucide="check-circle" class="w-12 h-12 text-green-500"></i>
                     </div>
                     <h3 class="text-2xl font-orbitron text-white tracking-widest uppercase">Postulación Registrada</h3>
-                    <p id="success-msg" class="text-gray-400 text-sm leading-relaxed italic px-8">
-                        "Tu frecuencia ha sido captada por el Nodo Maestro. El Arquitecto validará tu perfil y te contactará por correo electrónico para activar tu acceso soberano."
+                    <p id="success-msg" class="text-gray-400 text-sm leading-relaxed italic px-8 text-justify">
+                        Tu identidad bio-fractal ha sido sincronizada exitosamente con el Ledger de la Red. En este momento, tu postulación ha ingresado oficialmente a la <b>Whitelist de la Fase Génesis</b>. El Arquitecto Maestro realizará la validación frecuencial de tu perfil; una vez aprobada tu inclusión, recibirás un correo electrónico oficial con tu <b>llave de acceso exclusiva (URL de Ngrok)</b> para activar tu Nodo y comenzar tu participación en el portal de gobernanza 2026.
                     </p>
                     <div class="pt-6 border-t border-white/5">
                         <p class="text-[10px] text-cyan-900 font-mono uppercase">ID_DE_TRANSACCIÓN: <span id="tx-hash" class="text-cyan-700"></span></p>
