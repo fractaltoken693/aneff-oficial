@@ -42,13 +42,6 @@
             transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
-        }
-        .sbt-minted { animation: pulse-gold 2s infinite; border-color: #fbbf24 !important; }
-
         .btn-fractal {
             clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
             transition: all 0.3s ease;
@@ -71,6 +64,7 @@
             width: 100%;
             transition: all 0.3s ease;
         }
+        .input-fractal:focus { border-color: #06b6d4; background: rgba(255, 255, 255, 0.1); }
 
         .feature-card {
             border-left: 2px solid rgba(6, 182, 212, 0.3);
@@ -86,11 +80,6 @@
             padding: 30px;
             transition: all 0.4s ease;
         }
-        .gov-card:hover { 
-            border-color: #06b6d4; 
-            transform: translateY(-5px);
-            background: rgba(6, 182, 212, 0.05);
-        }
 
         .concept-tag {
             color: #06b6d4;
@@ -98,6 +87,9 @@
             cursor: help;
             font-weight: 600;
         }
+
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 20s linear infinite; }
     </style>
 </head>
 <body>
@@ -115,12 +107,12 @@
         
         <div class="flex items-center gap-6">
             <div class="hidden md:flex flex-col items-end">
-                <span class="text-[9px] text-gray-400 font-orbitron tracking-widest uppercase">Reputación SBT</span>
+                <span class="text-[9px] text-gray-400 font-orbitron tracking-widest uppercase">Estatus de Red</span>
                 <div class="flex items-center gap-2">
                     <div class="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div id="xpBar" class="h-full xp-bar-fill w-0"></div>
+                        <div id="xpBar" class="h-full xp-bar-fill w-full"></div>
                     </div>
-                    <span id="xpText" class="text-[10px] font-bold text-cyan-400 font-mono-tech">0% POK</span>
+                    <span class="text-[10px] font-bold text-cyan-400 font-mono-tech uppercase">Public_Node</span>
                 </div>
             </div>
             <div class="px-4 py-1.5 border border-cyan-500/50 text-cyan-400 text-[10px] font-orbitron rounded uppercase tracking-widest">
@@ -141,7 +133,7 @@
             </p>
             <div class="flex flex-wrap justify-center gap-4">
                 <button onclick="scrollToPassport()" class="btn-fractal bg-white text-black px-8 py-4 font-bold font-orbitron text-xs hover:bg-cyan-400 transition-colors uppercase tracking-widest">
-                    Acuñar Pasaporte Humano
+                    Postular para Nodo Fundador
                 </button>
             </div>
         </section>
@@ -173,11 +165,11 @@
                         </div>
                         <div class="feature-card">
                             <h4 class="text-purple-400 font-orbitron text-xs font-bold uppercase mb-1">Mecánica PoK y SBT</h4>
-                            <p class="text-[11px] text-gray-500">El Proof of Knowledge (PoK) valida tu evolución cognitiva a través de pequeñas acciones diarias. Una vez sellado, se acuña un Soulbound Token (SBT) permanente.</p>
+                            <p class="text-[11px] text-gray-500">El Proof of Knowledge (PoK) valida tu evolución cognitiva. Una vez validado por el Arquitecto, se acuña tu identidad en la red oficial.</p>
                         </div>
                         <div class="feature-card">
                             <h4 class="text-amber-500 font-orbitron text-xs font-bold uppercase mb-1">Nodos de Resonancia</h4>
-                            <p class="text-[11px] text-gray-500">La red de 144 Nodos Fractales actúa como un notariado digital descentralizado, garantizando que cada registro sea auténtico y transparente para todo el ecosistema.</p>
+                            <p class="text-[11px] text-gray-500">La red de 144 Nodos Fractales garantiza que cada registro sea auténtico y transparente para todo el ecosistema.</p>
                         </div>
                     </div>
                 </div>
@@ -185,60 +177,10 @@
                     <div class="w-80 h-80 border-2 border-cyan-500/20 rounded-full animate-spin-slow flex items-center justify-center">
                         <div class="w-64 h-64 border-2 border-purple-500/20 rounded-full flex items-center justify-center rotate-45">
                             <div class="w-48 h-48 border border-white/10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-xl shadow-[0_0_50px_rgba(6,182,212,0.1)]">
-                                <i data-lucide="fingerprint" class="w-20 h-20 text-cyan-400 opacity-80"></i>
+                                <i data-lucide="user-check" class="w-20 h-20 text-cyan-400 opacity-80"></i>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESONANCIA HOLÓNICA PARA ENTIDADES -->
-        <section class="text-center py-12">
-            <h2 class="text-3xl font-orbitron font-bold mb-4 glow-cyan uppercase tracking-tighter">Resonancia Holónica Institucional</h2>
-            <p class="text-gray-400 text-sm max-w-3xl mx-auto mb-16 leading-relaxed italic">
-                "Transformamos deudores pasivos en Nodos Conscientes y sucursales bancarias en Faros de Sincronización."
-            </p>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 text-left">
-                <div class="gov-card">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="bg-cyan-500/20 p-3 rounded-lg"><i data-lucide="landmark" class="text-cyan-400 w-6 h-6"></i></div>
-                        <h3 class="font-orbitron font-bold text-white text-lg tracking-tight uppercase">Banca y Financieras (SOFOM)</h3>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
-                        Las entidades actúan como Nodos de Resonancia. Al integrar sus archivos locales con el puente de hashes de ANEFF, obtienen <span class="concept-tag" title="Hash SHA-256: Una huella digital inmutable que certifica el archivo sin subirlo a la nube pública.">Soberanía de Datos</span> sin violar la privacidad del cliente.
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="users" class="w-4 h-4 text-cyan-500 shrink-0 mt-1"></i>
-                            <span class="text-[11px] text-gray-300"><strong>Flujo de Tráfico Humano:</strong> Los ciudadanos acuden a estos puntos físicos para sincronizar biometría y validar su PoK, aumentando la captación orgánica.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="refresh-cw" class="w-4 h-4 text-cyan-500 shrink-0 mt-1"></i>
-                            <span class="text-[11px] text-gray-300"><strong>Validación Descentralizada:</strong> El nodo de la financiera verifica la autenticidad del Pasaporte Humano mediante smart contracts, agilizando procesos de crédito.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="gov-card">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="bg-purple-500/20 p-3 rounded-lg"><i data-lucide="shield-check" class="text-purple-400 w-6 h-6"></i></div>
-                        <h3 class="font-orbitron font-bold text-white text-lg tracking-tight uppercase">Soberanía de Gestión</h3>
-                    </div>
-                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
-                        Lideramos la transición hacia la <span class="concept-tag" title="Descentralización Sistémica: Distribución de la autoridad y los recursos mediante código inmutable.">descentralización sistémica</span> mediante flujos profesionales de ingeniería:
-                    </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="git-branch" class="w-4 h-4 text-purple-500 shrink-0 mt-1"></i>
-                            <span class="text-[11px] text-gray-300"><strong>Arquitectura Git/Docker:</strong> Despliegue de nodos en contenedores aislados, permitiendo actualizaciones CI/CD sin interrupciones ni errores operativos.</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="binary" class="w-4 h-4 text-purple-500 shrink-0 mt-1"></i>
-                            <span class="text-[11px] text-gray-300"><strong>Interoperabilidad de Hashes:</strong> Vinculamos el token institucional con el EDUFT mediante puentes de confianza matemática, no burocrática.</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -250,148 +192,80 @@
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-cyan-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-cyan-400">144</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Nodos Fundadores</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Poder distribuido en la red fundacional. Whitelist exclusiva Phase Genesis.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Poder distribuido en la red fundacional.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-purple-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-purple-400">144M</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Suministro EDUFT</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Energía económica limitada por leyes matemáticas Fibonacci.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Energía económica limitada matemáticamente.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-amber-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-amber-400">SBT</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Soulbound ID</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Identidad ligada al alma digital. Inmutable, intransferible y eterna.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Identidad ligada al mérito inmutable.</p>
                 </div>
                 <div class="glass-panel p-8 rounded-3xl border-t-2 border-emerald-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-emerald-400">POK</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Proof of Knowledge</p>
-                    <p class="text-xs text-gray-400 leading-relaxed">Minería de conciencia mediante la validación del saber humano.</p>
+                    <p class="text-xs text-gray-400 leading-relaxed">Minería de conciencia validada.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ACUÑACIÓN DE PASAPORTE PoK FASE 1 -->
+        <!-- SECCIÓN DE POSTULACIÓN (REEMPLAZANDO TELEGRAM) -->
         <section id="passportSection" class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[100px]"></div>
             
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                
-                <div class="space-y-8">
-                    <div>
-                        <h2 class="text-3xl font-cinzel text-white mb-2 uppercase tracking-widest">Sincronización de Átomos</h2>
-                        <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Validación PoK - Hábitos Atómicos</p>
-                    </div>
-
-                    <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
-                        <h3 class="font-bold text-sm mb-4 flex items-center gap-2 uppercase tracking-tighter">
-                            <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
-                            Tarea de Iniciación: Protocolo de Soberanía
-                        </h3>
-                        <p class="text-xs text-gray-400 mb-6 leading-relaxed italic">
-                            "Los hábitos atómicos son las pequeñas acciones que, repetidas en la red, construyen una arquitectura financiera indestructible."
-                        </p>
-                        
-                        <div class="space-y-3" id="taskContainer">
-                            <button onclick="toggleValue(this, 'Identidad')" class="w-full p-4 border border-white/10 rounded-xl hover:bg-white/5 transition-all text-left flex justify-between items-center group">
-                                <div class="flex flex-col">
-                                    <span class="text-xs font-orbitron text-gray-400 group-hover:text-white transition-colors uppercase tracking-tight">1. Identidad Invariante</span>
-                                    <span class="text-[9px] text-gray-600">Mi trayectoria es mi historial inmutable.</span>
-                                </div>
-                                <i data-lucide="circle" class="w-4 h-4 text-gray-600 status-icon"></i>
-                            </button>
-                            <button onclick="toggleValue(this, 'Habitos')" class="w-full p-4 border border-white/10 rounded-xl hover:bg-white/5 transition-all text-left flex justify-between items-center group">
-                                <div class="flex flex-col">
-                                    <span class="text-xs font-orbitron text-gray-400 group-hover:text-white transition-colors uppercase tracking-tight">2. Hábitos Atómicos</span>
-                                    <span class="text-[9px] text-gray-600">Valido mi aprendizaje financiero diario.</span>
-                                </div>
-                                <i data-lucide="circle" class="w-4 h-4 text-gray-600 status-icon"></i>
-                            </button>
-                            <button onclick="toggleValue(this, 'Holarquia')" class="w-full p-4 border border-white/10 rounded-xl hover:bg-white/5 transition-all text-left flex justify-between items-center group">
-                                <div class="flex flex-col">
-                                    <span class="text-xs font-orbitron text-gray-400 group-hover:text-white transition-colors uppercase tracking-tight">3. Conciencia Holárquica</span>
-                                    <span class="text-[9px] text-gray-600">Reconozco que soy un Holón del sistema.</span>
-                                </div>
-                                <i data-lucide="circle" class="w-4 h-4 text-gray-600 status-icon"></i>
-                            </button>
-                            <button onclick="toggleValue(this, 'Equidad')" class="w-full p-4 border border-amber-500/20 bg-amber-500/5 rounded-xl hover:bg-amber-500/10 transition-all text-left flex justify-between items-center group shadow-lg">
-                                <div class="flex flex-col">
-                                    <span class="text-xs font-orbitron text-amber-500 group-hover:text-amber-400 transition-colors uppercase font-black tracking-widest">4. Equidad Autosemejante</span>
-                                    <span class="text-[9px] text-amber-600/70">Justicia distributiva en cada átomo de la red.</span>
-                                </div>
-                                <i data-lucide="shield" class="w-4 h-4 text-amber-600 status-icon animate-pulse"></i>
-                            </button>
-                        </div>
-                    </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-cinzel text-white mb-2 uppercase tracking-widest">Protocolo de Postulación</h2>
+                    <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Sincronía Google Cloud & Firebase</p>
                 </div>
 
-                <!-- VISUALIZACIÓN DEL PASAPORTE -->
-                <div class="relative">
-                    <div id="passportCard" class="bg-gradient-to-br from-gray-900 via-black to-slate-900 border border-white/10 rounded-[2rem] p-8 shadow-2xl relative transition-all duration-700">
-                        <div class="absolute top-0 right-0 p-8 opacity-10">
-                            <i data-lucide="infinity" class="w-32 h-32"></i>
-                        </div>
-                        
-                        <div class="flex justify-between items-start mb-12">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
-                                    <i data-lucide="user-check" class="text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <p class="text-[8px] font-orbitron text-gray-500 uppercase tracking-widest">Estado ID</p>
-                                    <p id="sbtStatus" class="text-[10px] text-gray-300 font-bold uppercase tracking-tighter">Esperando Sincronía</p>
-                                </div>
-                            </div>
-                            <i data-lucide="qr-code" class="w-10 h-10 text-white/20"></i>
-                        </div>
+                <!-- Estado 1: Iniciar Sincronía -->
+                <div id="step-login" class="space-y-8 text-center">
+                    <p class="text-gray-400 text-sm italic">"Tu cuenta de Google es el primer átomo de tu identidad digital soberana."</p>
+                    <button id="btn-google-login" class="bg-white text-black font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-4 mx-auto hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest">
+                        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-1 .67-2.28 1.07-3.71 1.07-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.67-.35-1.39-.35-2.09s.13-1.42.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/></svg>
+                        Sincronizar Identidad con Google
+                    </button>
+                </div>
 
-                        <div class="space-y-6 mb-12">
+                <!-- Estado 2: Formulario PoK -->
+                <div id="step-form" class="hidden space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-2 flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
+                            <img id="user-photo" src="" class="w-12 h-12 rounded-full border border-cyan-500">
                             <div>
-                                <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Portador Holográfico</p>
-                                <p class="text-xl font-mono-tech text-white">0x_RES_HOLON_144</p>
-                            </div>
-                            <div class="flex gap-8">
-                                <div>
-                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Ranking PoK</p>
-                                    <p id="levelDisplay" class="text-sm font-orbitron text-cyan-400 uppercase">Nivel 0</p>
-                                </div>
-                                <div>
-                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest mb-1">Balance EDUFT</p>
-                                    <p id="balanceDisplay" class="text-sm font-mono-tech text-white">0.00</p>
-                                </div>
+                                <p id="user-name" class="text-sm font-bold text-white"></p>
+                                <p id="user-email" class="text-[10px] text-gray-500 font-mono"></p>
                             </div>
                         </div>
-
-                        <div class="pt-6 border-t border-white/10">
-                            <p class="text-[8px] text-gray-600 font-mono mb-2 uppercase tracking-widest font-bold">Certificado de Coherencia Invariante</p>
-                            <div id="hashDisplay" class="text-[7px] text-cyan-900 font-mono break-all leading-tight uppercase">
-                                WAITING_FOR_ATOMIC_HABITS_SYNC...
-                            </div>
+                        <div>
+                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Edad Actual</label>
+                            <input type="number" id="post-age" class="input-fractal mt-1" placeholder="27">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Teléfono (WhatsApp)</label>
+                            <input type="text" id="post-phone" class="input-fractal mt-1" placeholder="+52 ...">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Lugar de Nacimiento</label>
+                            <input type="text" id="post-origin" class="input-fractal mt-1" placeholder="Ciudad, Estado">
                         </div>
                     </div>
-                    
-                    <!-- MODAL DE ÉXITO -->
-                    <div id="mintAlert" class="hidden absolute inset-0 flex items-center justify-center p-6 bg-black/95 backdrop-blur-3xl rounded-[2rem] z-20 text-center scale-90 opacity-0 transition-all duration-500 border border-amber-500/40 shadow-[0_0_60px_rgba(251,191,36,0.3)]">
-                        <div class="max-w-xs w-full py-2 overflow-y-auto max-h-full text-center">
-                            <i data-lucide="award" class="w-12 h-12 text-amber-500 mx-auto mb-4 animate-bounce"></i>
-                            <h4 class="text-xl font-orbitron font-bold text-white mb-2 tracking-tighter uppercase">¡Soberanía Activada!</h4>
-                            <p class="text-[10px] text-gray-300 mb-6 leading-relaxed">
-                                Tu Pasaporte Humano ha sido acuñado bajo el Hash de Coherencia de la red ANEFF. Elige tu ruta:
-                            </p>
-                            
-                            <div class="flex flex-col gap-4">
-                                <div class="text-left">
-                                    <p class="text-[8px] text-amber-500 uppercase font-bold tracking-[0.2em] mb-2 ml-1">Fase Génesis: Whitelist 144</p>
-                                    <a href="https://t.me/+TsH_wCIe4SU3YzAx" target="_blank" class="bg-amber-500 text-black w-full py-3 font-black font-orbitron text-[9px] uppercase rounded-lg hover:bg-amber-400 transition-all shadow-lg text-center flex items-center justify-center gap-2 px-4">
-                                        <i data-lucide="users" class="w-3 h-3"></i> Postular para Nodo Fundador y enviar mis datos vía Telegram
-                                    </a>
-                                </div>
+                    <button id="btn-submit-post" class="w-full bg-cyan-600 text-white font-bold py-4 rounded-xl mt-4 hover:bg-cyan-500 shadow-lg transition-all uppercase tracking-widest text-xs">
+                        Transmitir Postulación a la Red
+                    </button>
+                </div>
 
-                                <button onclick="closeMintAlert()" class="text-[9px] font-orbitron text-gray-600 uppercase tracking-[0.2em] hover:text-white transition-colors mt-2 underline">
-                                    Ver Ledger del Pasaporte
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Estado 3: Éxito -->
+                <div id="step-success" class="hidden text-center py-12 space-y-6 animate-pulse">
+                    <i data-lucide="check-circle" class="w-20 h-20 text-green-500 mx-auto"></i>
+                    <h3 class="text-2xl font-orbitron text-white">SINCRONIZACIÓN RECIBIDA</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed italic">
+                        "Tu frecuencia ha sido captada por el Nodo Maestro. El Arquitecto validará tus datos y te enviará tu enlace exclusivo de acceso (Ngrok) por correo electrónico."
+                    </p>
                 </div>
             </div>
         </section>
@@ -403,78 +277,95 @@
         <p class="text-[8px] mt-2 tracking-tighter">Poder Distribuido en 144 Nodos de Resonancia</p>
     </footer>
 
-    <script>
-        lucide.createIcons();
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- POK LOGIC ---
-        let valuesChecked = { Identidad: false, Habitos: false, Holarquia: false, Equidad: false };
-        let points = 0;
-        let tokens = 0;
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZgRlT5FiL9o46k8ZugnsdMcYkIvt8Z-w",
+            authDomain: "aneff-2026.firebaseapp.com",
+            projectId: "aneff-2026",
+            storageBucket: "aneff-2026.firebasestorage.app",
+            messagingSenderId: "848566741414",
+            appId: "1:848566741414:web:d57495335a0b88673b4767"
+        };
 
-        function toggleValue(btn, type) {
-            if(valuesChecked[type]) return;
-            
-            valuesChecked[type] = true;
-            points += 25; 
-            tokens += 260; // Tokens fundadores
-            
-            const icon = btn.querySelector('.status-icon');
-            icon.setAttribute('data-lucide', 'check-circle');
-            icon.classList.remove('text-gray-600', 'text-amber-600');
-            icon.classList.add('text-cyan-400');
-            btn.classList.add('bg-cyan-900/20', 'border-cyan-500/40');
-            btn.classList.remove('bg-amber-500/5', 'border-amber-500/20');
-            
-            lucide.createIcons();
-            updatePassport();
-        }
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
+        const appId = "aneff-2026";
 
-        function updatePassport() {
-            const xpBar = document.getElementById('xpBar');
-            const xpText = document.getElementById('xpText');
-            const levelDisplay = document.getElementById('levelDisplay');
-            const balanceDisplay = document.getElementById('balanceDisplay');
-            const hashDisplay = document.getElementById('hashDisplay');
-            const sbtStatus = document.getElementById('sbtStatus');
-            const passportCard = document.getElementById('passportCard');
+        let user = null;
 
-            xpBar.style.width = `${points}%`;
-            xpText.innerText = `${Math.round(points)}% POK`;
-            balanceDisplay.innerText = tokens.toFixed(2);
-            levelDisplay.innerText = points >= 100 ? "NODO_SINCRONIZADO" : `APRENDIZ_LVL_${Math.floor(points/25)}`;
+        // UI Elements
+        const stepLogin = document.getElementById('step-login');
+        const stepForm = document.getElementById('step-form');
+        const stepSuccess = document.getElementById('step-success');
+        const btnGoogle = document.getElementById('btn-google-login');
+        const btnSubmit = document.getElementById('btn-submit-post');
 
-            if(points >= 100) {
-                sbtStatus.innerText = "MINTEADO (Soulbound)";
-                sbtStatus.classList.add('text-amber-500');
-                passportCard.classList.add('sbt-minted');
-                hashDisplay.innerText = "0x" + Array.from({length:64}, () => Math.floor(Math.random()*16).toString(16)).join('').toUpperCase();
-                hashDisplay.classList.remove('text-cyan-900');
-                hashDisplay.classList.add('text-amber-600/70');
+        // LOGIN CON GOOGLE
+        btnGoogle.onclick = async () => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                user = result.user;
                 
-                showMintAlert();
+                document.getElementById('user-name').innerText = user.displayName;
+                document.getElementById('user-email').innerText = user.email;
+                document.getElementById('user-photo').src = user.photoURL;
+
+                stepLogin.classList.add('hidden');
+                stepForm.classList.remove('hidden');
+            } catch (e) { alert("Sincronización interrumpida."); }
+        };
+
+        // ENVIAR POSTULACIÓN A FIRESTORE
+        btnSubmit.onclick = async () => {
+            const age = document.getElementById('post-age').value;
+            const phone = document.getElementById('post-phone').value;
+            const origin = document.getElementById('post-origin').value;
+
+            if(!age || !phone || !origin) return alert("Completa todos los campos del protocolo PoK.");
+
+            btnSubmit.disabled = true;
+            btnSubmit.innerText = "TRANSMITIENDO...";
+
+            try {
+                // Ruta: /artifacts/{appId}/public/data/postulaciones/{uid}
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'postulaciones', user.uid);
+                await setDoc(docRef, {
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: user.displayName,
+                    photoURL: user.photoURL,
+                    age: age,
+                    phone: phone,
+                    origin: origin,
+                    status: "PENDING",
+                    timestamp: Date.now()
+                });
+
+                stepForm.classList.add('hidden');
+                stepSuccess.classList.remove('hidden');
+            } catch (e) {
+                console.error(e);
+                alert("Falla en el Ledger de Firestore. Intenta de nuevo.");
+                btnSubmit.disabled = false;
             }
-        }
+        };
 
-        function showMintAlert() {
-            const alert = document.getElementById('mintAlert');
-            alert.classList.remove('hidden');
-            setTimeout(() => {
-                alert.classList.add('scale-100', 'opacity-100');
-            }, 100);
-        }
-
-        function closeMintAlert() {
-            const alert = document.getElementById('mintAlert');
-            alert.classList.remove('scale-100', 'opacity-100');
-            alert.classList.add('scale-90', 'opacity-0');
-            setTimeout(() => alert.classList.add('hidden'), 500);
-        }
-
-        function scrollToPassport() {
+        window.scrollToPassport = () => {
             document.getElementById('passportSection').scrollIntoView({ behavior: 'smooth' });
-        }
+        };
 
-        // --- BACKGROUND SHADER ---
+        lucide.createIcons();
+    </script>
+
+    <!-- BACKGROUND SHADER -->
+    <script>
         const canvas = document.getElementById("glCanvas");
         const gl = canvas.getContext("webgl");
         const vsSource = `attribute vec4 aVertexPosition; void main() { gl_Position = aVertexPosition; }`;
