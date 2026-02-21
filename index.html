@@ -53,33 +53,12 @@
             border-bottom: 1px solid rgba(251, 191, 36, 0.2);
         }
 
-        .input-fractal {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-size: 12px;
-            outline: none;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-        .input-fractal:focus { border-color: #06b6d4; background: rgba(255, 255, 255, 0.1); }
-
         .feature-card {
             border-left: 2px solid rgba(6, 182, 212, 0.3);
             padding-left: 20px;
             transition: all 0.3s ease;
         }
         .feature-card:hover { border-left-color: #06b6d4; background: rgba(255,255,255,0.02); }
-
-        .gov-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            transition: all 0.4s ease;
-        }
 
         .concept-tag {
             color: #06b6d4;
@@ -90,6 +69,8 @@
 
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .animate-spin-slow { animation: spin-slow 20s linear infinite; }
+        
+        #loading-overlay { background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
     </style>
 </head>
 <body>
@@ -222,6 +203,11 @@
                     <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Identidad Sincronizada</p>
                 </div>
 
+                <div id="loading-overlay" class="hidden absolute inset-0 z-50 flex flex-col items-center justify-center rounded-[3rem]">
+                    <div class="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                    <p class="text-xs font-orbitron text-cyan-400 animate-pulse tracking-widest">SINCRONIZANDO CON EL LEDGER...</p>
+                </div>
+
                 <!-- Estado 1: Iniciar Sincronía -->
                 <div id="step-login" class="space-y-8 text-center">
                     <p class="text-gray-400 text-sm italic">"Tu cuenta de Google es el primer átomo de tu identidad digital soberana."</p>
@@ -231,41 +217,18 @@
                     </button>
                 </div>
 
-                <!-- Estado 2: Formulario PoK -->
-                <div id="step-form" class="hidden space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="col-span-2 flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                            <img id="user-photo" src="" class="w-12 h-12 rounded-full border border-cyan-500">
-                            <div>
-                                <p id="user-name" class="text-sm font-bold text-white"></p>
-                                <p id="user-email" class="text-[10px] text-gray-500 font-mono"></p>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Edad Actual</label>
-                            <input type="number" id="post-age" class="input-fractal mt-1" placeholder="27">
-                        </div>
-                        <div>
-                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Teléfono (WhatsApp)</label>
-                            <input type="text" id="post-phone" class="input-fractal mt-1" placeholder="+52 ...">
-                        </div>
-                        <div class="col-span-2">
-                            <label class="text-[10px] text-cyan-500 uppercase font-bold ml-1">Lugar de Nacimiento</label>
-                            <input type="text" id="post-origin" class="input-fractal mt-1" placeholder="Ciudad, Estado">
-                        </div>
+                <!-- Estado 2: Éxito Automático -->
+                <div id="step-success" class="hidden text-center py-12 space-y-6 animate-fadeIn">
+                    <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto border border-green-500/50">
+                        <i data-lucide="check-circle" class="w-12 h-12 text-green-500"></i>
                     </div>
-                    <button id="btn-submit-post" class="w-full bg-cyan-600 text-white font-bold py-4 rounded-xl mt-4 hover:bg-cyan-500 shadow-lg transition-all uppercase tracking-widest text-xs">
-                        Transmitir Postulación a la Red
-                    </button>
-                </div>
-
-                <!-- Estado 3: Éxito -->
-                <div id="step-success" class="hidden text-center py-12 space-y-6 animate-pulse">
-                    <i data-lucide="check-circle" class="w-20 h-20 text-green-500 mx-auto"></i>
-                    <h3 class="text-2xl font-orbitron text-white">SINCRONIZACIÓN RECIBIDA</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed italic">
-                        "Tu frecuencia ha sido captada por el Nodo Maestro. El Arquitecto validará tus datos y te enviará tu enlace exclusivo de acceso (Ngrok) por correo electrónico."
+                    <h3 class="text-2xl font-orbitron text-white tracking-widest uppercase">Postulación Registrada</h3>
+                    <p id="success-msg" class="text-gray-400 text-sm leading-relaxed italic px-8">
+                        "Tu frecuencia ha sido captada por el Nodo Maestro. El Arquitecto validará tu perfil y te contactará por correo electrónico para activar tu acceso soberano."
                     </p>
+                    <div class="pt-6 border-t border-white/5">
+                        <p class="text-[10px] text-cyan-900 font-mono uppercase">ID_DE_TRANSACCIÓN: <span id="tx-hash" class="text-cyan-700"></span></p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -281,7 +244,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBZgRlT5FiL9o46k8ZugnsdMcYkIvt8Z-w",
@@ -298,61 +261,58 @@
         const provider = new GoogleAuthProvider();
         const appId = "aneff-2026";
 
-        let user = null;
-
-        // UI Elements
+        // Elementos UI
         const stepLogin = document.getElementById('step-login');
-        const stepForm = document.getElementById('step-form');
         const stepSuccess = document.getElementById('step-success');
+        const loader = document.getElementById('loading-overlay');
         const btnGoogle = document.getElementById('btn-google-login');
-        const btnSubmit = document.getElementById('btn-submit-post');
 
-        // LOGIN CON GOOGLE
-        btnGoogle.onclick = async () => {
-            try {
-                const result = await signInWithPopup(auth, provider);
-                user = result.user;
-                
-                document.getElementById('user-name').innerText = user.displayName;
-                document.getElementById('user-email').innerText = user.email;
-                document.getElementById('user-photo').src = user.photoURL;
+        // Escucha cambios de sesión
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                await checkAndProcessApplication(user);
+            }
+        });
 
-                stepLogin.classList.add('hidden');
-                stepForm.classList.remove('hidden');
-            } catch (e) { alert("Sincronización interrumpida."); }
-        };
-
-        // ENVIAR POSTULACIÓN A FIRESTORE
-        btnSubmit.onclick = async () => {
-            const age = document.getElementById('post-age').value;
-            const phone = document.getElementById('post-phone').value;
-            const origin = document.getElementById('post-origin').value;
-
-            if(!age || !phone || !origin) return alert("Completa todos los campos del protocolo PoK.");
-
-            btnSubmit.disabled = true;
-            btnSubmit.innerText = "TRANSMITIENDO...";
+        // Lógica de Sincronización Automática
+        async function checkAndProcessApplication(user) {
+            loader.classList.remove('hidden');
+            stepLogin.classList.add('hidden');
 
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'postulaciones', user.uid);
-                await setDoc(docRef, {
-                    uid: user.uid,
-                    email: user.email,
-                    displayName: user.displayName,
-                    photoURL: user.photoURL,
-                    age: age,
-                    phone: phone,
-                    origin: origin,
-                    status: "PENDING",
-                    timestamp: Date.now()
-                });
+                const docSnap = await getDoc(docRef);
 
-                stepForm.classList.add('hidden');
+                if (!docSnap.exists()) {
+                    // Si no existe, lo creamos inmediatamente con datos de Google
+                    await setDoc(docRef, {
+                        uid: user.uid,
+                        email: user.email,
+                        displayName: user.displayName,
+                        photoURL: user.photoURL,
+                        status: "PENDING",
+                        timestamp: Date.now(),
+                        onboarding_type: "AUTO_GOOGLE"
+                    });
+                }
+
+                // Mostrar éxito
+                document.getElementById('tx-hash').innerText = user.uid.substring(0, 16).toUpperCase();
                 stepSuccess.classList.remove('hidden');
             } catch (e) {
                 console.error(e);
-                alert("Falla en el Ledger. Intenta de nuevo.");
-                btnSubmit.disabled = false;
+                alert("Error de conexión con el Ledger de Red.");
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+
+        btnGoogle.onclick = async () => {
+            try {
+                await signInWithPopup(auth, provider);
+            } catch (e) { 
+                console.error(e);
+                alert("Sincronización interrumpida."); 
             }
         };
 
