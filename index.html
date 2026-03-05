@@ -29,7 +29,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .glow-cyan { filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.5)); }
+        .glow-cyan { filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.6)); }
         
         .scanline {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
@@ -37,13 +37,8 @@
             background-size: 100% 4px; pointer-events: none; z-index: 100;
         }
 
-        .xp-bar-fill {
-            background: linear-gradient(90deg, #06b6d4, #8b5cf6);
-            transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
         .law-banner {
-            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.05), transparent);
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.08), transparent);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
@@ -55,17 +50,13 @@
         }
         .feature-card:hover { border-left-color: #06b6d4; background: rgba(255,255,255,0.02); }
 
-        .concept-tag {
-            color: #06b6d4;
-            border-bottom: 1px dashed #06b6d4;
-            cursor: help;
-            font-weight: 600;
-        }
-
         @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .animate-spin-slow { animation: spin-slow 20s linear infinite; }
-        
-        #loading-overlay { background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+
+        .hero-text {
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+            line-height: 1.1;
+        }
     </style>
 </head>
 <body>
@@ -82,72 +73,123 @@
         </div>
         
         <div class="flex items-center gap-6">
-            <div class="hidden md:flex flex-col items-end">
-                <span class="text-[9px] text-gray-400 font-orbitron tracking-widest uppercase">Estatus de Red</span>
-                <div class="flex items-center gap-2">
-                    <div class="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
-                        <div id="xpBar" class="h-full xp-bar-fill w-full"></div>
-                    </div>
-                    <span class="text-[10px] font-bold text-cyan-400 font-mono-tech uppercase">Public_Node</span>
-                </div>
-            </div>
             <div class="px-4 py-1.5 border border-cyan-500/50 text-cyan-400 text-[10px] font-orbitron rounded uppercase tracking-widest">
                 Holarquía: 144 Nodos
             </div>
         </div>
     </nav>
 
-    <main class="w-full max-w-6xl mx-auto pt-48 pb-24 px-4 relative z-10 flex flex-col gap-24">
+    <main class="w-full max-w-6xl mx-auto pt-48 pb-24 px-4 relative z-10 flex flex-col gap-32">
 
-        <!-- HERO SECTION REDISEÑADA -->
+        <!-- HERO SECTION: SIN BOTÓN, PURA NARRATIVA -->
         <section class="text-center">
-            <h1 class="text-5xl md:text-8xl font-orbitron font-black mb-8 tracking-tighter glow-cyan">
-                ESTRUCTURA <br> <span class="sbt-gradient">BIO-FRACTAL</span>
+            <h1 class="text-4xl md:text-7xl font-cinzel font-bold mb-8 tracking-tighter hero-text">
+                Donde cada pulso de tu ser es el <br> 
+                <span class="sbt-gradient italic">centro del universo</span>
             </h1>
-            <p class="text-gray-300 max-w-3xl mx-auto font-light leading-relaxed italic text-lg md:text-xl px-4">
-                "Donde cada pulso de tu ser es el centro del universo. Una huella inalterable que danza en la armonía de lo <span class="concept-tag" title="Sincronía constante: Flujo de información que mantiene la forma sin importar la escala.">invisible</span>."
+            <p class="text-gray-400 max-w-3xl mx-auto font-light leading-relaxed italic text-lg md:text-xl font-cinzel">
+                "Una huella inalterable que danza en la armonía de lo invisible."
             </p>
         </section>
 
-        <!-- BANNER: EQUIDAD AUTOSEMEJANTE -->
+        <!-- BANNER: SIMETRÍA DEL BIEN COMÚN (NUEVA NARRATIVA) -->
         <section class="law-banner py-16 text-center">
             <div class="max-w-4xl mx-auto px-4">
-                <h2 class="text-2xl md:text-4xl font-cinzel text-white mb-8 tracking-[0.3em] uppercase opacity-80">Simetría del Bien Común</h2>
-                <p class="text-gray-400 text-lg italic font-light leading-relaxed max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-4xl font-cinzel text-white mb-8 tracking-widest uppercase glow-gold">Simetría del Bien Común</h2>
+                <p class="text-gray-200 text-lg md:text-xl italic font-light leading-relaxed max-w-3xl mx-auto font-cinzel">
                     "Somos las ramas de un mismo latido: el florecimiento de tu luz es la aurora de todos. Aquí, el amor que entregas regresa multiplicado en valor, tejiendo un destino común bajo la mirada del cristal absoluto."
                 </p>
             </div>
         </section>
 
-        <!-- ARQUITECTURA DEL PASAPORTE HUMANO -->
-        <section class="glass-panel rounded-[2rem] p-8 md:p-16">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- MATRIZ DE VALOR FRACTAL -->
+        <section class="text-center">
+            <h2 class="text-2xl font-orbitron font-bold mb-16 text-cyan-500/80 italic uppercase tracking-[0.3em]">Matriz de Valor Fractal</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+                
+                <!-- 1. Nodos Fundadores -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-cyan-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-cyan-400">144</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Nodos Fundadores</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Guardianes de la frecuencia inicial. Su generosidad sostiene el motor de abundancia para el acceso universal.</p>
+                </div>
+
+                <!-- 2. Suministro EDUFT -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-purple-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-purple-400">144M</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Suministro Fractal</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Energía limitada por la ley de Fibonacci. Una escasez que respeta el crecimiento orgánico de la vida.</p>
+                </div>
+
+                <!-- 3. DAO -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-indigo-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-indigo-400">DAO</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Holarquía Consciente</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Gobernanza colectiva donde el poder se distribuye por el mérito y la resonancia, no por la jerarquía.</p>
+                </div>
+
+                <!-- 4. POK -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-emerald-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-emerald-400">POK</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Minería de Conciencia</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Tus acciones de crecimiento personal son el combustible que genera valor real en el ecosistema.</p>
+                </div>
+
+                <!-- 5. FLUJO -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-rose-500 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-rose-400">FLUJO</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Gracia Multiplicada</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Distribución de beneficios basada en el cumplimiento de los trayectos de formación y servicio.</p>
+                </div>
+
+                <!-- 6. C-P -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-amber-400 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-amber-400">C-P</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Sustento Presente</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Retornos inmediatos generados por el dinamismo de la comunidad en su intercambio cotidiano.</p>
+                </div>
+
+                <!-- 7. L-P -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-amber-600 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-amber-600">L-P</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Visión de Legado</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">La cosecha final para quienes construyen los cimientos de la soberanía financiera futura.</p>
+                </div>
+
+                <!-- 8. SBT -->
+                <div class="glass-panel p-6 rounded-3xl border-t-2 border-blue-400 hover:transform hover:scale-105 transition-all">
+                    <div class="text-3xl font-black font-mono-tech mb-1 text-blue-400">SBT</div>
+                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Pasaporte Humano</p>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">Tu firma digital biográfica. Un espejo inmutable de tu trayectoria de vida y sabiduría alcanzada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PASAPORTE HUMANO -->
+        <section id="passportSection" class="glass-panel rounded-[2rem] p-8 md:p-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl font-orbitron font-bold text-white mb-6 tracking-tighter uppercase">Tu ADN de Identidad Universal</h2>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8 text-justify">
-                        Más que un registro, este Pasaporte es la **esencia de tu soberanía digital**. Respaldado por el cifrado inalterable de un Hash SBT, posees una firma vitalicia que actúa como el puente definitivo para transitar y ser reconocido en los sistemas socioeconómicos de la nueva era.
+                    <h2 class="text-4xl font-cinzel font-bold text-white mb-8 tracking-tighter uppercase">ADN de Identidad Universal</h2>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-10 font-light italic">
+                        Inicia tu **Trayecto de Gracia**. Tu registro inmutable en ANEFF no es solo una cuenta, es la certificación de tu riqueza de conciencia y el fin del "Caos Lineal".
                     </p>
                     
-                    <div class="space-y-6">
+                    <div class="space-y-8">
                         <div class="feature-card">
-                            <h4 class="text-cyan-400 font-orbitron text-xs font-bold uppercase mb-1">Puente de Valor sin Fronteras</h4>
-                            <p class="text-[11px] text-gray-500">Emplea tu registro inmutable para integrarte fluidamente a las economías emergentes y flujos de capital, eliminando las barreras de los sistemas tradicionales.</p>
+                            <h4 class="text-cyan-400 font-orbitron text-xs font-bold uppercase mb-2 tracking-widest">Minería de Hábitos</h4>
+                            <p class="text-[12px] text-gray-400">El sistema reconoce tu constancia y servicio, activando tu nodo mediante la Prueba de Conocimiento.</p>
                         </div>
                         <div class="feature-card">
-                            <h4 class="text-purple-400 font-orbitron text-xs font-bold uppercase mb-1">Tu Legado es tu Capital</h4>
-                            <p class="text-[11px] text-gray-500">Cada acto de conciencia certificado por el protocolo PoK se integra a tu trayectoria. Esta bitácora ética será tu mayor respaldo dentro de la arquitectura global descentralizada.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="text-amber-500 font-orbitron text-xs font-bold uppercase mb-1">Convergencia Fractal</h4>
-                            <p class="text-[11px] text-gray-500">Diseñado con leyes de interconexión profunda, tu ser digital se comunica con múltiples redes, permitiéndote expandir tus méritos y nivel de influencia a cualquier plano tecnológico.</p>
+                            <h4 class="text-purple-400 font-orbitron text-xs font-bold uppercase mb-2 tracking-widest">Soberanía del Ser</h4>
+                            <p class="text-[12px] text-gray-400">Eres el único dueño de tu historia. Tu identidad fractal es el puente hacia una nueva banca de ética descentralizada.</p>
                         </div>
                     </div>
                 </div>
                 <div class="relative flex justify-center">
                     <div class="w-80 h-80 border-2 border-cyan-500/20 rounded-full animate-spin-slow flex items-center justify-center">
                         <div class="w-64 h-64 border-2 border-purple-500/20 rounded-full flex items-center justify-center rotate-45">
-                            <div class="w-48 h-48 border border-white/10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-xl shadow-[0_0_50px_rgba(6,182,212,0.1)]">
-                                <i data-lucide="shield-check" class="w-20 h-20 text-cyan-400 opacity-80"></i>
+                            <div class="w-48 h-48 border border-white/10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-xl">
+                                <i data-lucide="sparkles" class="w-16 h-16 text-cyan-400 opacity-60"></i>
                             </div>
                         </div>
                     </div>
@@ -155,84 +197,46 @@
             </div>
         </section>
 
-        <!-- TOKENOMICS -->
-        <section class="text-center">
-            <h2 class="text-3xl font-orbitron font-bold mb-16 glow-cyan italic uppercase tracking-tighter">Tokenomics</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-cyan-500 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-cyan-400">144</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Nodos Fundadores</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Tu lugar en el origen. Ser uno de los 144 fundadores asegura tu rango histórico y participación en el nacimiento del ecosistema.</p>
-                </div>
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-purple-500 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-purple-400">144M</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Suministro EDUFT</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Energía limitada matemáticamente. Garantizamos escasez real para que cada token represente un valor genuino en la red.</p>
-                </div>
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-indigo-500 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-indigo-400">DAO</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-1">1 Nodo = 1 Voto</p>
-                    <p class="text-[8px] text-indigo-300 font-mono mb-3 uppercase tracking-tighter">DAO: Decisiones en Comunidad</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Democracia pura. Tu voz tiene el mismo peso que cualquier otra; juntos decidimos el rumbo de la asociación sin jefes ni intermediarios.</p>
-                </div>
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-emerald-500 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-emerald-400">POK</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-1">Ganar por Aprender</p>
-                    <p class="text-[8px] text-emerald-300 font-mono mb-3 uppercase tracking-tighter">POK: Prueba de Aprendizaje</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Tu evolución personal es el motor que genera energía económica. Validamos tu conocimiento y lo convertimos en beneficios reales.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROTOCOLO DE POSTULACIÓN -->
-        <section id="passportSection" class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[100px]"></div>
-            
-            <div class="max-w-2xl mx-auto">
-                <div class="text-center mb-12">
+        <!-- POSTULACIÓN -->
+        <section class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden mb-20">
+            <div class="max-w-2xl mx-auto text-center">
+                <div class="mb-12">
                     <h2 class="text-3xl font-cinzel text-white mb-2 uppercase tracking-widest">Protocolo de Postulación</h2>
-                    <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.4em] uppercase">Identidad Sincronizada</p>
+                    <p class="text-cyan-500 font-orbitron text-[10px] tracking-[0.5em] uppercase">Sincronización de Conciencia</p>
                 </div>
 
-                <div id="loading-overlay" class="hidden absolute inset-0 z-50 flex flex-col items-center justify-center rounded-[3rem]">
-                    <div class="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4"></div>
-                    <p class="text-xs font-orbitron text-cyan-400 animate-pulse tracking-widest">SINCRONIZANDO CON EL LEDGER...</p>
-                </div>
-
-                <div id="step-login" class="space-y-8 text-center">
-                    <p class="text-gray-400 text-sm italic">"Tu cuenta de Google es el primer átomo de tu identidad digital soberana."</p>
-                    <button id="btn-google-login" class="bg-white text-black font-bold py-4 px-8 rounded-xl flex items-center justify-center gap-4 mx-auto hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest">
+                <div id="step-login" class="space-y-10">
+                    <p class="text-gray-400 text-sm italic">"Tu identidad digital comienza con un acto de voluntad soberana."</p>
+                    <button id="btn-google-login" class="bg-white text-black font-bold py-5 px-10 rounded-2xl flex items-center justify-center gap-4 mx-auto hover:bg-cyan-400 transition-all uppercase text-xs tracking-widest shadow-xl">
                         <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-1 .67-2.28 1.07-3.71 1.07-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.67-.35-1.39-.35-2.09s.13-1.42.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/></svg>
-                        Sincronizar Identidad con Google
+                        Unirme a la Holarquía
                     </button>
                 </div>
 
-                <div id="step-success" class="hidden text-center py-12 space-y-6 animate-fadeIn">
+                <div id="step-success" class="hidden py-12 space-y-6">
                     <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto border border-green-500/50">
-                        <i data-lucide="smile" class="w-12 h-12 text-green-500"></i>
+                        <i data-lucide="check" class="w-12 h-12 text-green-500"></i>
                     </div>
-                    <h3 class="text-2xl font-orbitron text-white tracking-widest uppercase">¡Hola! Qué buena noticia</h3>
-                    <p id="success-msg" class="text-gray-400 text-sm leading-relaxed italic px-8 text-center">
-                        Acabamos de recibir tus datos y ya tienes un lugar apartado en nuestra lista oficial de la <b>Fase Génesis</b>. El Arquitecto le echará un ojo a tu perfil pronto para darte luz verde definitiva. Mantente muy atento a tu correo; ahí te mandaremos tu <b>llave de acceso exclusiva</b>.
+                    <h3 class="text-2xl font-orbitron text-white uppercase tracking-widest">Sincronización Exitosa</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed px-8">
+                        Has iniciado el <b>Umbral de Gratuidad</b>. Tu firma fractal está siendo integrada en la red de los 144 Nodos.
                     </p>
-                    <div class="pt-6 border-t border-white/5">
-                        <p class="text-[10px] text-cyan-900 font-mono uppercase">REGISTRO_ID: <span id="tx-hash" class="text-cyan-700"></span></p>
-                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="text-center py-12 border-t border-white/5 opacity-50">
-        <p class="text-[9px] font-orbitron tracking-widest uppercase">ANEFF Holarquía Bio-Fractal © 2026</p>
-        <p class="text-[8px] mt-2 tracking-tighter">Poder Distribuido en 144 Nodos de Resonancia</p>
+    <footer class="text-center py-16 border-t border-white/5 opacity-40">
+        <p class="text-[10px] font-orbitron tracking-[0.6em] uppercase text-cyan-400">ANEFF Holarquía Bio-Fractal © 2026</p>
+        <p class="text-[8px] mt-4 tracking-tighter opacity-70">El capital al servicio de la conciencia</p>
     </footer>
 
+    <!-- Firebase y Lógica -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBZgRlT5FiL9o46k8ZugnsdMcYkIvt8Z-w",
@@ -249,45 +253,22 @@
         const provider = new GoogleAuthProvider();
         const appId = "aneff-2026";
 
-        const stepLogin = document.getElementById('step-login');
-        const stepSuccess = document.getElementById('step-success');
-        const loader = document.getElementById('loading-overlay');
-        const btnGoogle = document.getElementById('btn-google-login');
-
         onAuthStateChanged(auth, async (user) => {
-            if (user) { await checkAndProcessApplication(user); }
+            if (user) {
+                document.getElementById('step-login').classList.add('hidden');
+                document.getElementById('step-success').classList.remove('hidden');
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'postulaciones', user.uid);
+                await setDoc(docRef, { email: user.email, name: user.displayName, ts: Date.now() }, { merge: true });
+            }
         });
 
-        async function checkAndProcessApplication(user) {
-            loader.classList.remove('hidden');
-            stepLogin.classList.add('hidden');
-            try {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'postulaciones', user.uid);
-                const docSnap = await getDoc(docRef);
-                if (!docSnap.exists()) {
-                    await setDoc(docRef, {
-                        uid: user.uid,
-                        email: user.email,
-                        displayName: user.displayName,
-                        status: "PENDING",
-                        timestamp: Date.now()
-                    });
-                }
-                document.getElementById('tx-hash').innerText = user.uid.toUpperCase();
-                stepSuccess.classList.remove('hidden');
-            } catch (e) {
-                console.error(e);
-            } finally {
-                loader.classList.add('hidden');
-                lucide.createIcons();
-            }
-        }
-
-        btnGoogle.onclick = async () => { try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); } };
+        document.getElementById('btn-google-login').onclick = () => signInWithPopup(auth, provider);
+        
+        // Renderizado de iconos de Lucide tras cambios
         lucide.createIcons();
     </script>
 
-    <!-- Fondo Dinámico Shader -->
+    <!-- Shader de Fondo (Aura Fractal) -->
     <script>
         const canvas = document.getElementById("glCanvas");
         const gl = canvas.getContext("webgl");
@@ -299,45 +280,33 @@
             void main() {
                 vec2 uv = (gl_FragCoord.xy * 2.0 - uResolution.xy) / uResolution.y;
                 float d = length(uv);
-                vec3 col = vec3(0.01, 0.02, 0.06);
+                vec3 col = vec3(0.005, 0.01, 0.02);
                 for(float i=0.0; i<3.0; i++){
                     uv = fract(uv * 1.618) - 0.5;
                     d = length(uv) * exp(-length(uv));
-                    vec3 c = vec3(0.05, 0.2, 0.4) * (0.5 + 0.5*sin(uTime + i*2.0));
-                    d = sin(d*8. + uTime)/8.;
-                    d = abs(d);
-                    d = 0.01 / d;
+                    vec3 c = vec3(0.04, 0.15, 0.3) * (0.6 + 0.4*sin(uTime * 0.5 + i*2.0));
+                    d = sin(d*6. + uTime * 0.3)/8.; d = abs(d); d = 0.01 / d;
                     col += c * d;
                 }
-                gl_FragColor = vec4(col * smoothstep(1.3, 0.1, length(uv*0.3)), 1.0);
+                gl_FragColor = vec4(col, 1.0);
             }
         `;
-        function loadShader(gl, type, source) {
-            const shader = gl.createShader(type);
-            gl.shaderSource(shader, source);
-            gl.compileShader(shader);
-            return shader;
-        }
-        const shaderProgram = gl.createProgram();
-        gl.attachShader(shaderProgram, loadShader(gl, gl.VERTEX_SHADER, vsSource));
-        gl.attachShader(shaderProgram, loadShader(gl, gl.FRAGMENT_SHADER, fsSource));
-        gl.linkProgram(shaderProgram);
-        gl.useProgram(shaderProgram);
-        const positionBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        function loadShader(gl, type, source) { const s = gl.createShader(type); gl.shaderSource(s, source); gl.compileShader(s); return s; }
+        const prog = gl.createProgram();
+        gl.attachShader(prog, loadShader(gl, gl.VERTEX_SHADER, vsSource));
+        gl.attachShader(prog, loadShader(gl, gl.FRAGMENT_SHADER, fsSource));
+        gl.linkProgram(prog); gl.useProgram(prog);
+        const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,1,1,1,-1,-1,1,-1]), gl.STATIC_DRAW);
-        const aPos = gl.getAttribLocation(shaderProgram, "aVertexPosition");
-        gl.enableVertexAttribArray(aPos);
-        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
-        const uRes = gl.getUniformLocation(shaderProgram, "uResolution");
-        const uTime = gl.getUniformLocation(shaderProgram, "uTime");
+        const aPos = gl.getAttribLocation(prog, "aVertexPosition");
+        gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+        const uRes = gl.getUniformLocation(prog, "uResolution");
+        const uTime = gl.getUniformLocation(prog, "uTime");
         function render(time) {
-            time *= 0.0007;
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
             gl.viewport(0, 0, canvas.width, canvas.height);
             gl.uniform2f(uRes, canvas.width, canvas.height);
-            gl.uniform1f(uTime, time);
+            gl.uniform1f(uTime, time * 0.001);
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
             requestAnimationFrame(render);
         }
