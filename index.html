@@ -42,11 +42,6 @@
             transition: width 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .btn-fractal {
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
-            transition: all 0.3s ease;
-        }
-
         .law-banner {
             background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.05), transparent);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -102,34 +97,29 @@
         </div>
     </nav>
 
-    <main class="w-full max-w-6xl mx-auto pt-32 pb-24 px-4 relative z-10 flex flex-col gap-24">
+    <main class="w-full max-w-6xl mx-auto pt-48 pb-24 px-4 relative z-10 flex flex-col gap-24">
 
         <!-- HERO SECTION REDISEÑADA -->
         <section class="text-center">
-            <h1 class="text-5xl md:text-8xl font-orbitron font-black mb-6 tracking-tighter glow-cyan">
+            <h1 class="text-5xl md:text-8xl font-orbitron font-black mb-8 tracking-tighter glow-cyan">
                 ESTRUCTURA <br> <span class="sbt-gradient">BIO-FRACTAL</span>
             </h1>
-            <p class="text-gray-400 max-w-2xl mx-auto font-light leading-relaxed italic mb-10 text-sm md:text-base">
-                "Donde el origen reside en cada punto de conciencia. Una impronta humana eterna que resuena con la <span class="concept-tag" title="Sincronía constante: Flujo de información que mantiene la forma sin importar la escala.">Resonancia Coherente</span>."
+            <p class="text-gray-300 max-w-3xl mx-auto font-light leading-relaxed italic text-lg md:text-xl px-4">
+                "Donde cada pulso de tu ser es el centro del universo. Una huella inalterable que danza en la armonía de lo <span class="concept-tag" title="Sincronía constante: Flujo de información que mantiene la forma sin importar la escala.">invisible</span>."
             </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="scrollToPassport()" class="btn-fractal bg-white text-black px-8 py-4 font-bold font-orbitron text-xs hover:bg-cyan-400 transition-colors uppercase tracking-widest">
-                    Activar Frecuencia de Nodo Fundador
-                </button>
-            </div>
         </section>
 
-        <!-- BANNER: EQUIDAD AUTOSEMEJANTE (NUEVA REDACCIÓN) -->
-        <section class="law-banner py-12 text-center">
+        <!-- BANNER: EQUIDAD AUTOSEMEJANTE -->
+        <section class="law-banner py-16 text-center">
             <div class="max-w-4xl mx-auto px-4">
-                <h2 class="text-2xl md:text-4xl font-cinzel text-white mb-6 tracking-widest uppercase glow-gold">Simetría del Bien Común</h2>
-                <p class="text-gray-300 text-base italic font-light leading-relaxed max-w-3xl mx-auto">
-                    "Nuestra red se organiza bajo los principios de una familia orgánica: la plenitud de uno es el éxito del conjunto. Aquí, la energía depositada por cada nodo genera una onda expansiva de valor equivalente, asegurando un florecimiento colectivo regido por la transparencia absoluta."
+                <h2 class="text-2xl md:text-4xl font-cinzel text-white mb-8 tracking-[0.3em] uppercase opacity-80">Simetría del Bien Común</h2>
+                <p class="text-gray-400 text-lg italic font-light leading-relaxed max-w-3xl mx-auto">
+                    "Somos las ramas de un mismo latido: el florecimiento de tu luz es la aurora de todos. Aquí, el amor que entregas regresa multiplicado en valor, tejiendo un destino común bajo la mirada del cristal absoluto."
                 </p>
             </div>
         </section>
 
-        <!-- ARQUITECTURA DEL PASAPORTE HUMANO (NUEVA REDACCIÓN) -->
+        <!-- ARQUITECTURA DEL PASAPORTE HUMANO -->
         <section class="glass-panel rounded-[2rem] p-8 md:p-16">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -165,65 +155,36 @@
             </div>
         </section>
 
-        <!-- TOKENOMICS (MANTENIDO SEGÚN SOLICITUD) -->
+        <!-- TOKENOMICS -->
         <section class="text-center">
             <h2 class="text-3xl font-orbitron font-bold mb-16 glow-cyan italic uppercase tracking-tighter">Tokenomics</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-                <!-- Nodos Fundadores -->
                 <div class="glass-panel p-6 rounded-3xl border-t-2 border-cyan-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-cyan-400">144</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Nodos Fundadores</p>
                     <p class="text-[11px] text-gray-400 leading-relaxed">Tu lugar en el origen. Ser uno de los 144 fundadores asegura tu rango histórico y participación en el nacimiento del ecosistema.</p>
                 </div>
-                <!-- Suministro EDUFT -->
                 <div class="glass-panel p-6 rounded-3xl border-t-2 border-purple-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-purple-400">144M</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Suministro EDUFT</p>
                     <p class="text-[11px] text-gray-400 leading-relaxed">Energía limitada matemáticamente. Garantizamos escasez real para que cada token represente un valor genuino en la red.</p>
                 </div>
-                <!-- DAO Gobernanza -->
                 <div class="glass-panel p-6 rounded-3xl border-t-2 border-indigo-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-indigo-400">DAO</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-1">1 Nodo = 1 Voto</p>
                     <p class="text-[8px] text-indigo-300 font-mono mb-3 uppercase tracking-tighter">DAO: Decisiones en Comunidad</p>
                     <p class="text-[11px] text-gray-400 leading-relaxed">Democracia pura. Tu voz tiene el mismo peso que cualquier otra; juntos decidimos el rumbo de la asociación sin jefes ni intermediarios.</p>
                 </div>
-                <!-- POK -->
                 <div class="glass-panel p-6 rounded-3xl border-t-2 border-emerald-500 hover:transform hover:scale-105 transition-all">
                     <div class="text-3xl font-black font-mono-tech mb-1 text-emerald-400">POK</div>
                     <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-1">Ganar por Aprender</p>
                     <p class="text-[8px] text-emerald-300 font-mono mb-3 uppercase tracking-tighter">POK: Prueba de Aprendizaje</p>
                     <p class="text-[11px] text-gray-400 leading-relaxed">Tu evolución personal es el motor que genera energía económica. Validamos tu conocimiento y lo convertimos en beneficios reales.</p>
                 </div>
-                <!-- Recompensas -->
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-rose-500 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-rose-400">RECOMPENSAS</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Airdrops Directos</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Premios por tu lealtad. Recibe envíos directos de beneficios y tokens por mantenerte activo y sumar valor a la comunidad.</p>
-                </div>
-                <!-- C-P -->
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-amber-400 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-amber-400">C-P</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Comisiones Mensuales</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Beneficios rápidos. Recibe retornos mensuales por apoyar la liquidez inmediata y el flujo constante de nuestra red.</p>
-                </div>
-                <!-- L-P -->
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-amber-600 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-amber-600">L-P</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-4">Premio a la Lealtad</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Máximo rendimiento. Las comisiones más altas para quienes deciden fortalecer la red a largo plazo con visión de futuro.</p>
-                </div>
-                <!-- SBT -->
-                <div class="glass-panel p-6 rounded-3xl border-t-2 border-blue-400 hover:transform hover:scale-105 transition-all">
-                    <div class="text-3xl font-black font-mono-tech mb-1 text-blue-400">SBT</div>
-                    <p class="text-[10px] font-orbitron tracking-widest text-white uppercase mb-1">Tu Identidad Inmortal</p>
-                    <p class="text-[8px] text-blue-300 font-mono mb-3 uppercase tracking-tighter">SBT: Token Ligado al Alma</p>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">Tu esencia en la red. Un registro único que guarda tus logros y reputación para siempre; algo inmutable que solo tú puedes portar.</p>
-                </div>
             </div>
         </section>
 
-        <!-- PROTOCOLO DE POSTULACIÓN (MANTENIDO SEGÚN SOLICITUD) -->
+        <!-- PROTOCOLO DE POSTULACIÓN -->
         <section id="passportSection" class="glass-panel rounded-[3rem] p-8 md:p-16 relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[100px]"></div>
             
@@ -252,7 +213,7 @@
                     </div>
                     <h3 class="text-2xl font-orbitron text-white tracking-widest uppercase">¡Hola! Qué buena noticia</h3>
                     <p id="success-msg" class="text-gray-400 text-sm leading-relaxed italic px-8 text-center">
-                        Acabamos de recibir tus datos y ya tienes un lugar apartado en nuestra lista oficial de la <b>Fase Génesis</b>. El Arquitecto le echará un ojo a tu perfil pronto para darte luz verde definitiva. Mantente muy atento a tu correo; ahí te mandaremos tu <b>llave de acceso exclusiva</b> para que puedas entrar al portal y empecemos a trabajar juntos en este gran proyecto para el 2026.
+                        Acabamos de recibir tus datos y ya tienes un lugar apartado en nuestra lista oficial de la <b>Fase Génesis</b>. El Arquitecto le echará un ojo a tu perfil pronto para darte luz verde definitiva. Mantente muy atento a tu correo; ahí te mandaremos tu <b>llave de acceso exclusiva</b>.
                     </p>
                     <div class="pt-6 border-t border-white/5">
                         <p class="text-[10px] text-cyan-900 font-mono uppercase">REGISTRO_ID: <span id="tx-hash" class="text-cyan-700"></span></p>
@@ -268,7 +229,6 @@
         <p class="text-[8px] mt-2 tracking-tighter">Poder Distribuido en 144 Nodos de Resonancia</p>
     </footer>
 
-    <!-- Firebase SDK & Scripts -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -313,17 +273,17 @@
                         timestamp: Date.now()
                     });
                 }
-                document.getElementById('tx-hash').innerText = user.uid.substring(0, 16).toUpperCase();
+                document.getElementById('tx-hash').innerText = user.uid.toUpperCase();
                 stepSuccess.classList.remove('hidden');
             } catch (e) {
                 console.error(e);
             } finally {
                 loader.classList.add('hidden');
+                lucide.createIcons();
             }
         }
 
         btnGoogle.onclick = async () => { try { await signInWithPopup(auth, provider); } catch (e) { console.error(e); } };
-        window.scrollToPassport = () => { document.getElementById('passportSection').scrollIntoView({ behavior: 'smooth' }); };
         lucide.createIcons();
     </script>
 
